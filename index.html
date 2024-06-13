@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Sklad PPL</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Sklad PPL</h1>
+    
+    <h2>Zadání zásilky</h2>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <label for="last_digits">Poslední 4 čísla zásilky:</label>
+            <input type="text" class="form-control" id="last_digits" name="last_digits" required>
+        </div>
+        <div class="form-group">
+            <label for="shelf">Polička (1-5):</label>
+            <input type="number" class="form-control" id="shelf" name="shelf" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+            <label for="note">Poznámka:</label>
+            <textarea class="form-control" id="note" name="note"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Přidat</button>
+    </form>
+
+    <h2>Vyhledávání zásilky</h2>
+    <form action="/search" method="post">
+        <div class="form-group">
+            <label for="search_digits">Poslední 4 čísla zásilky:</label>
+            <input type="text" class="form-control" id="search_digits" name="search_digits" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Najít</button>
+    </form>
+
+    <h2>Zobrazení celého skladu</h2>
+    <a href="/view" class="btn btn-secondary">Zobrazit sklad</a>
+</div>
+</body>
+</html>

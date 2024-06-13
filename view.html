@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Zobrazení skladu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Zobrazení skladu</h1>
+    {% for shelf, items in shelves.items() %}
+        <h2>Polička {{ shelf }}</h2>
+        {% if items %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Poslední 4 čísla zásilky</th>
+                        <th>Poznámka</th>
+                        <th>Akce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.last_digits }}</td>
+                        <td>{{ item.note }}</td>
+                        <td>
+                            <form action="/delete/{{ item.id }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Smazat</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Žádné zásilky na této poličce.</p>
+        {% endif %}
+    {% endfor %}
+    <a href="/" class="btn btn-secondary">Zpět</a>
+</div>
+</body>
+</html>
